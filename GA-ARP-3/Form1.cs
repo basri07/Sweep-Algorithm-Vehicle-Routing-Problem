@@ -31,8 +31,6 @@ namespace GA_ARP_3
 
         {
             // TODO: This line of code loads data into the '_GA_ARP_3DataSet8.Müsteriler' table. You can move, or remove it, as needed.
-  
-
             this.aracTableAdapter.Fill(this._GA_ARP_3DataSet6.Arac);
            // this.müsterilerTableAdapter.Fill(this._GA_ARP_3DataSet4.Müsteriler);
             baglanti = new SqlConnection("Data Source = BASRI\\BASRI; Initial Catalog = GA-ARP-3; Integrated Security = True");
