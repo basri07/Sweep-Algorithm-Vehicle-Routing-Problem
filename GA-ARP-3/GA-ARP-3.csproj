@@ -117,6 +117,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_GA_ARP_3DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="_GA_ARP_3DataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_GA_ARP_3DataSet10.xsd</DependentUpon>
+    </Compile>
     <Compile Include="_GA_ARP_3DataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +156,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_GA_ARP_3DataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_GA_ARP_3DataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_GA_ARP_3DataSet9.xsd</DependentUpon>
     </Compile>
     <Compile Include="ÇÖZÜM.cs">
       <SubType>Form</SubType>
@@ -219,6 +229,17 @@
     </None>
     <None Include="_GA_ARP_3DataSet1.xss">
       <DependentUpon>_GA_ARP_3DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_GA_ARP_3DataSet10.xsc">
+      <DependentUpon>_GA_ARP_3DataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="_GA_ARP_3DataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_GA_ARP_3DataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_GA_ARP_3DataSet10.xss">
+      <DependentUpon>_GA_ARP_3DataSet10.xsd</DependentUpon>
     </None>
     <None Include="_GA_ARP_3DataSet2.xsc">
       <DependentUpon>_GA_ARP_3DataSet2.xsd</DependentUpon>
@@ -296,6 +317,17 @@
     </None>
     <None Include="_GA_ARP_3DataSet8.xss">
       <DependentUpon>_GA_ARP_3DataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="_GA_ARP_3DataSet9.xsc">
+      <DependentUpon>_GA_ARP_3DataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="_GA_ARP_3DataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_GA_ARP_3DataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_GA_ARP_3DataSet9.xss">
+      <DependentUpon>_GA_ARP_3DataSet9.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

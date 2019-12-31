@@ -30,9 +30,9 @@ namespace GA_ARP_3
         private void Form1_Load(object sender, EventArgs e)
 
         {
-            // TODO: This line of code loads data into the '_GA_ARP_3DataSet8.Müsteriler' table. You can move, or remove it, as needed.
-            this.aracTableAdapter.Fill(this._GA_ARP_3DataSet6.Arac);
-           // this.müsterilerTableAdapter.Fill(this._GA_ARP_3DataSet4.Müsteriler);
+            // TODO: This line of code loads data into the '_GA_ARP_3DataSet10.Müsteriler' table. You can move, or remove it, as needed.
+            this.müsterilerTableAdapter2.Fill(this._GA_ARP_3DataSet10.Müsteriler);
+
             baglanti = new SqlConnection("Data Source = BASRI\\BASRI; Initial Catalog = GA-ARP-3; Integrated Security = True");
             da = new SqlDataAdapter("Select *From Müsteriler", baglanti);
             ds = new DataSet();
@@ -41,9 +41,8 @@ namespace GA_ARP_3
             da.Fill(dt);
             MusteriGridWiew.DataSource = dt;
             baglanti.Close();
-
             listBox1.Items.Clear();
-            SqlCommand komut = new SqlCommand("Select*From Müsteriler", baglanti);
+            SqlCommand komut = new SqlCommand("Select*From Müsteriler order by Acılar", baglanti);
             try
             {
                 baglanti.Open();
@@ -51,9 +50,7 @@ namespace GA_ARP_3
                
                 while (dr.Read())
                 {
-                    Musteri depo = new Musteri(dr);
-                    MusteriListesi.Add(depo);
-                   
+                    MusteriListesi.Add(new Musteri(dr));
                 }
             }
             catch { /* error */ }
@@ -76,45 +73,36 @@ namespace GA_ARP_3
                     Uzaklık[i, j] += Math.Pow(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[2].Value) - Convert.ToDouble(MusteriGridWiew.Rows[j].Cells[2].Value), 2);
                     Uzaklık[i, j] = Math.Sqrt(Uzaklık[i, j]);
                     Uzaklık[i, j] = Math.Ceiling(Uzaklık[i, j]);
-                    listBox1.Items.Add(Uzaklık[i, j]);
+                   // listBox1.Items.Add(Uzaklık[i, j]);
                 }
-            for (i = 1; i < MüşteriSayısı; i++)
+            /*  for (i = 1; i < MüşteriSayısı; i++)
             {
 
                 PolarKoordinat[i] = Geography.AciHesapla(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[1].Value), Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[2].Value));
-               // listBox1.Items.Add(PolarKoordinat[i]);
-            }
+                MusteriGridWiew.Rows[i].Cells[4].Value = PolarKoordinat[i];
+                SqlCommand cmd = new SqlCommand("INSERT INTO Müsteriler (ID,X,Y,Talep,Acılar) VALUES (@ID,@X,@Y,@Talep,@Acılar)", baglanti);
+                baglanti.Open();
+                cmd.Parameters.AddWithValue("@Talep", Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[4].Value));
+                baglanti.Close();
+            }*/
         }
 
-        public int SıradakiMüsteriID;
         private void button1_Click(object sender, EventArgs e)
         {
-            int MüsteriSayisi = MusteriGridWiew.RowCount;
-
-            int i = 0;
-            int MusteriID = i;
-            for (i = 0; i < MüsteriSayisi; i++)
+            int MüsteriSayisi = MusteriListesi.Count;
+            int[] Çözüm = new int[MüsteriSayisi];
+            int[] EnİyiÇözüm = new int[MüsteriSayisi];
+            double[,] Uzaklık = new double[MüsteriSayisi, MüsteriSayisi];
+            double Sonuç, EnİyiSonuç;
+            for (int i = 0; i < MüsteriSayisi; i++)
             {
-                int MusteriTalep = Convert.ToInt32(MusteriGridWiew.Rows[i].Cells[3].Value);
-
-                for (int j = 0; j < AracGridWiew.RowCount; j++)
-                {
-                    int AracKapasitesi = Convert.ToInt32(AracGridWiew.Rows[j].Cells[2].Value);
-
-                    if (MusteriTalep < AracKapasitesi)
-                    {
-
-                        MusteriID = i;
-                        SıradakiMüsteriID = i + 1;
-                        AracKapasitesi = AracKapasitesi - MusteriTalep;
-                        MüsteriSayisi = MüsteriSayisi - 1;
-                    }
-                    else
-                    {
-                        SıradakiMüsteriID = 0;
-                    }
-                }
+                Çözüm[i] = i;
             }
+            Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
+            Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
+            EnİyiSonuç = Sonuç;
+            listBox1.Items.Add(EnİyiSonuç);
+
         }
     }
 }

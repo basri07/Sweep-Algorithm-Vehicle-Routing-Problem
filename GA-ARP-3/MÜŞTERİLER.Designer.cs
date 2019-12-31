@@ -43,21 +43,28 @@
             this.Sil_Button = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.MüsteriSayisi_TextBox = new MetroFramework.Controls.MetroTextBox();
-            this.MusteriGrid = new System.Windows.Forms.DataGridView();
             this.müsterilerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this._GA_ARP_3DataSet5 = new GA_ARP_3._GA_ARP_3DataSet5();
             this.müsterilerTableAdapter1 = new GA_ARP_3._GA_ARP_3DataSet5TableAdapters.MüsterilerTableAdapter();
+            this.MusteriGrid = new System.Windows.Forms.DataGridView();
+            this._GA_ARP_3DataSet9 = new GA_ARP_3._GA_ARP_3DataSet9();
+            this.müsterilerBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.müsterilerTableAdapter2 = new GA_ARP_3._GA_ARP_3DataSet9TableAdapters.MüsterilerTableAdapter();
             this.ıDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.talepDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acılarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PolarKoodinat = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.müsteriBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // müsteriBindingSource
@@ -268,21 +275,6 @@
             this.MüsteriSayisi_TextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.MüsteriSayisi_TextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // MusteriGrid
-            // 
-            this.MusteriGrid.AutoGenerateColumns = false;
-            this.MusteriGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MusteriGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ıDDataGridViewTextBoxColumn,
-            this.xDataGridViewTextBoxColumn,
-            this.yDataGridViewTextBoxColumn,
-            this.talepDataGridViewTextBoxColumn});
-            this.MusteriGrid.DataSource = this.müsterilerBindingSource1;
-            this.MusteriGrid.Location = new System.Drawing.Point(352, 75);
-            this.MusteriGrid.Name = "MusteriGrid";
-            this.MusteriGrid.Size = new System.Drawing.Size(443, 352);
-            this.MusteriGrid.TabIndex = 12;
-            // 
             // müsterilerBindingSource1
             // 
             this.müsterilerBindingSource1.DataMember = "Müsteriler";
@@ -296,6 +288,36 @@
             // müsterilerTableAdapter1
             // 
             this.müsterilerTableAdapter1.ClearBeforeFill = true;
+            // 
+            // MusteriGrid
+            // 
+            this.MusteriGrid.AutoGenerateColumns = false;
+            this.MusteriGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MusteriGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ıDDataGridViewTextBoxColumn,
+            this.xDataGridViewTextBoxColumn,
+            this.yDataGridViewTextBoxColumn,
+            this.talepDataGridViewTextBoxColumn,
+            this.acılarDataGridViewTextBoxColumn});
+            this.MusteriGrid.DataSource = this.müsterilerBindingSource2;
+            this.MusteriGrid.Location = new System.Drawing.Point(303, 83);
+            this.MusteriGrid.Name = "MusteriGrid";
+            this.MusteriGrid.Size = new System.Drawing.Size(538, 324);
+            this.MusteriGrid.TabIndex = 12;
+            // 
+            // _GA_ARP_3DataSet9
+            // 
+            this._GA_ARP_3DataSet9.DataSetName = "_GA_ARP_3DataSet9";
+            this._GA_ARP_3DataSet9.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // müsterilerBindingSource2
+            // 
+            this.müsterilerBindingSource2.DataMember = "Müsteriler";
+            this.müsterilerBindingSource2.DataSource = this._GA_ARP_3DataSet9;
+            // 
+            // müsterilerTableAdapter2
+            // 
+            this.müsterilerTableAdapter2.ClearBeforeFill = true;
             // 
             // ıDDataGridViewTextBoxColumn
             // 
@@ -321,11 +343,25 @@
             this.talepDataGridViewTextBoxColumn.HeaderText = "Talep";
             this.talepDataGridViewTextBoxColumn.Name = "talepDataGridViewTextBoxColumn";
             // 
+            // acılarDataGridViewTextBoxColumn
+            // 
+            this.acılarDataGridViewTextBoxColumn.DataPropertyName = "Acılar";
+            this.acılarDataGridViewTextBoxColumn.HeaderText = "Acılar";
+            this.acılarDataGridViewTextBoxColumn.Name = "acılarDataGridViewTextBoxColumn";
+            // 
+            // PolarKoodinat
+            // 
+            this.PolarKoodinat.Location = new System.Drawing.Point(9, 200);
+            this.PolarKoodinat.Name = "PolarKoodinat";
+            this.PolarKoodinat.Size = new System.Drawing.Size(274, 20);
+            this.PolarKoodinat.TabIndex = 13;
+            // 
             // MÜŞTERİLER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 450);
+            this.Controls.Add(this.PolarKoodinat);
             this.Controls.Add(this.MusteriGrid);
             this.Controls.Add(this.MüsteriSayisi_TextBox);
             this.Controls.Add(this.metroButton1);
@@ -343,10 +379,13 @@
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -365,13 +404,18 @@
         private MetroFramework.Controls.MetroButton Sil_Button;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroTextBox MüsteriSayisi_TextBox;
-        private System.Windows.Forms.DataGridView MusteriGrid;
         private _GA_ARP_3DataSet5 _GA_ARP_3DataSet5;
         private System.Windows.Forms.BindingSource müsterilerBindingSource1;
         private _GA_ARP_3DataSet5TableAdapters.MüsterilerTableAdapter müsterilerTableAdapter1;
+        private System.Windows.Forms.DataGridView MusteriGrid;
+        private _GA_ARP_3DataSet9 _GA_ARP_3DataSet9;
+        private System.Windows.Forms.BindingSource müsterilerBindingSource2;
+        private _GA_ARP_3DataSet9TableAdapters.MüsterilerTableAdapter müsterilerTableAdapter2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn yDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn talepDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn acılarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox PolarKoodinat;
     }
 }

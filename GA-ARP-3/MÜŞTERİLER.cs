@@ -37,9 +37,12 @@ namespace GA_ARP_3
 
         private void MÜŞTERİLER_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the '_GA_ARP_3DataSet9.Müsteriler' table. You can move, or remove it, as needed.
+            this.müsterilerTableAdapter2.Fill(this._GA_ARP_3DataSet9.Müsteriler);
 
 
             Griddoldur();
+
 
         }
 
@@ -50,8 +53,17 @@ namespace GA_ARP_3
 
         private void AracEkle_Button_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd= new SqlCommand("INSERT INTO Müsteriler (ID,X,Y,Talep) VALUES ('" + MusteriID_TextBox.Text + "','" + XKoord_TextBox.Text + "','" + YKoord_TextBox.Text + "','"+MusteriTalep_TextBox.Text+"')", baglanti);
+
+            double PolarKoordinat;
+            PolarKoordinat = Geography.AciHesapla(Convert.ToDouble(XKoord_TextBox.Text), Convert.ToDouble(YKoord_TextBox.Text));
+            PolarKoodinat.Text = PolarKoordinat.ToString();
+            SqlCommand cmd = new SqlCommand("INSERT INTO Müsteriler (ID,X,Y,Talep,Acılar) VALUES (@ID,@X,@Y,@Talep,@Acılar)", baglanti);
             baglanti.Open();
+            cmd.Parameters.AddWithValue("@ID", Convert.ToInt32(MusteriID_TextBox.Text));
+            cmd.Parameters.AddWithValue("@X", Convert.ToDouble(XKoord_TextBox.Text));
+            cmd.Parameters.AddWithValue("@Y", Convert.ToDouble(YKoord_TextBox.Text));
+            cmd.Parameters.AddWithValue("@Talep", Convert.ToInt32(MusteriTalep_TextBox.Text));
+            cmd.Parameters.AddWithValue("@Acılar", Convert.ToDouble(PolarKoodinat.Text));
             cmd.ExecuteNonQuery();
             //MessageBox.Show("Eklendi");
             MusteriGrid.Update();
@@ -97,25 +109,29 @@ namespace GA_ARP_3
 
             for (int i = 1; i < Müsterisayisi+1; i++)
             {
-               
-               
+
+               // string Acılar;
                 int MüsteriAd = rastgele.Next(0, 100);
                 double KoordX =rastgele.Next(-200, 200)+rastgele.NextDouble();
                 double KoordY = rastgele.Next(-200, 200) + rastgele.NextDouble();
                 int Talep = rastgele.Next(100, 15000);
+               // double[] PolarKoordinat = new double[Müsterisayisi];
                 string harfler = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz";
                 int harf = rastgele.Next(0, harfler.Length);
                 MusteriID_TextBox.Text=i.ToString();
                 MusteriTalep_TextBox.Text = Talep.ToString();
                 XKoord_TextBox.Text = KoordX.ToString();
                 YKoord_TextBox.Text = KoordY.ToString();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Müsteriler (ID,X,Y,Talep) VALUES (@ID,@X,@Y,@Talep)",baglanti);
+                double PolarKoordinat;
+                PolarKoordinat = Geography.AciHesapla(Convert.ToDouble(XKoord_TextBox.Text), Convert.ToDouble(YKoord_TextBox.Text));
+                PolarKoodinat.Text = PolarKoordinat.ToString();
+                SqlCommand cmd = new SqlCommand("INSERT INTO Müsteriler (ID,X,Y,Talep,Acılar) VALUES (@ID,@X,@Y,@Talep,@Acılar)",baglanti);
                 baglanti.Open();
                 cmd.Parameters.AddWithValue("@ID", Convert.ToInt32(MusteriID_TextBox.Text));
                 cmd.Parameters.AddWithValue("@X", Convert.ToDouble(XKoord_TextBox.Text));
                 cmd.Parameters.AddWithValue("@Y", Convert.ToDouble(YKoord_TextBox.Text));
                 cmd.Parameters.AddWithValue("@Talep", Convert.ToInt32(MusteriTalep_TextBox.Text));
-
+                cmd.Parameters.AddWithValue("@Acılar", Convert.ToDouble(PolarKoodinat.Text));
                 cmd.ExecuteNonQuery();
                 //MessageBox.Show("Eklendi");
                 MusteriGrid.Update();
