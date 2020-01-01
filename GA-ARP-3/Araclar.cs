@@ -9,32 +9,77 @@ namespace GA_ARP_3
 {
     public class Araclar : ICloneable
     {
-        private SqlDataReader dr;
+        int _ID;
+        int _Kapasite;
+        Boolean _Kullanıldımı;
 
-        public object Clone()
+        public int ID
         {
-            return this.MemberwiseClone();
+            get
+            {
+                return _ID;
+            }
+
+            set
+            {
+                _ID = value;
+            }
+        }
+        public int Kapasite
+        {
+            get
+            {
+                return _Kapasite;
+            }
+
+            set
+            {
+                _Kapasite= value;
+            }
+        }
+        public Boolean Kullanıldımı
+        {
+            get
+            {
+                return _Kullanıldımı;
+            }
+
+            set
+            {
+                _Kullanıldımı = value;
+            }
         }
 
-        public Araclar()
+        object ICloneable.Clone()
         {
-
+            throw new NotImplementedException();
         }
-        public Araclar(object ID, object Kapasite, Boolean Kullanildimi)
-        {
-            this.ID=ID;
-            this.Kapasite = Kapasite;
-            this.Kullanildimi = Kullanildimi;
-        }
+        /*  private SqlDataReader dr;
 
-        public Araclar(SqlDataReader dr)
-        {
-            this.dr = dr;
-        }
+public object Clone()
+{
+return this.MemberwiseClone();
+}
 
-        public object ID { get; set; }
-        public object Kapasite { get; set; }
-        public object Kullanildimi { get; set; }
+public Araclar()
+{
+
+}
+public Araclar(object ID, object Kapasite, Boolean Kullanildimi)
+{
+this.ID=ID;
+this.Kapasite = Kapasite;
+this.Kullanildimi = Kullanildimi;
+}
+
+public Araclar(SqlDataReader dr)
+{
+this.dr = dr;
+}
+
+public object ID { get; set; }
+public object Kapasite { get; set; }
+public object Kullanildimi { get; set; } */
     }
 }
 

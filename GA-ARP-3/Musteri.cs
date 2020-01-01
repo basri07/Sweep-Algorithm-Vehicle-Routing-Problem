@@ -18,12 +18,12 @@ namespace GA_ARP_3
     {
         private SqlDataReader dr;
 
-        public Musteri(SqlDataReader dr)
+       /* public Musteri(SqlDataReader dr)
         {
             this.dr = dr;
         }
 
-        /*  public object MusteriID;
+         public object MusteriID;
             public object Enlem;
             public object Boylam;
             public object SiparisMiktari;
@@ -43,8 +43,78 @@ namespace GA_ARP_3
         public object Boylam  { get; set; } 
         public object SiparisMiktari { get; set; }
         public Double Uzaklik { get; set; } */
+        
+        int _ID;
+        double _X;
+        double _Y;
+        int _Talep;
+        double _Acılar;
+
+        public int ID
+        {
+            get
+            {
+                return _ID;
+            }
+
+            set
+            {
+                _ID = value;
+            }
+        }
+        public double X
+        {
+            get
+            {
+                return _X;
+            }
+
+            set
+            {
+                _X = value;
+            }
+        }
+        public double Y
+        {
+            get
+            {
+                return _Y;
+            }
+
+            set
+            {
+                _Y = value;
+            }
+        }
+
+        public int Talep
+        {
+            get
+            {
+                return _Talep;
+            }
+
+            set
+            {
+                _Talep= value;
+            }
+        }
+
+        public double Acılar
+        {
+            get
+            {
+                return _Acılar;
+            }
+
+            set
+            {
+                _Acılar = value;
+            }
+        }
     }
 }
+
         
         
 
