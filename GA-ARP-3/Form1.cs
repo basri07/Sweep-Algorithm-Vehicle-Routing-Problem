@@ -34,7 +34,7 @@ namespace GA_ARP_3
             this.müsterilerTableAdapter2.Fill(this._GA_ARP_3DataSet10.Müsteriler);
 
             baglanti = new SqlConnection("Data Source = BASRI\\BASRI; Initial Catalog = GA-ARP-3; Integrated Security = True");
-            da = new SqlDataAdapter("Select *From Müsteriler", baglanti);
+            da = new SqlDataAdapter("Select *From Müsteriler order by Acılar", baglanti);
             ds = new DataSet();
             DataTable dt = new DataTable();
             baglanti.Open();
@@ -51,9 +51,27 @@ namespace GA_ARP_3
                 while (dr.Read())
                 {
                     MusteriListesi.Add(new Musteri(dr));
+                 
                 }
+
             }
             catch { /* error */ }
+
+            finally { baglanti.Close(); }
+            try
+            {
+                baglanti.Open();
+                SqlDataReader dr = komut.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Araclist.Add(new Araclar(dr));
+
+                }
+
+            }
+            catch { /* error */ }
+
             finally { baglanti.Close(); }
 
             int MüşteriSayısı = MusteriGridWiew.RowCount - 1;
@@ -89,19 +107,62 @@ namespace GA_ARP_3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int MüsteriSayisi = MusteriListesi.Count;
+            int MüsteriSayisi = MusteriGridWiew.Rows.Count;
             int[] Çözüm = new int[MüsteriSayisi];
             int[] EnİyiÇözüm = new int[MüsteriSayisi];
             double[,] Uzaklık = new double[MüsteriSayisi, MüsteriSayisi];
+            int i = 0;
             double Sonuç, EnİyiSonuç;
-            for (int i = 0; i < MüsteriSayisi; i++)
+            for (i = 0; i < MüsteriSayisi; i++)
             {
                 Çözüm[i] = i;
             }
             Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
             Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
             EnİyiSonuç = Sonuç;
-            listBox1.Items.Add(EnİyiSonuç);
+          
+            for (i=0; i<MüsteriSayisi;i++)
+            {
+                
+                for (i = 0; i < MüsteriSayisi; i++)
+                {
+                    int Pos1, Pos2;
+                    for(int j=0; i< AracGridWiew.Rows.Count; j++) 
+                    {
+
+                        int Kapasite = Convert.ToInt32(AracGridWiew.Rows[j].Cells[1].Value);
+                        int Talep = Convert.ToInt32(MusteriGridWiew.Rows[i].Cells[3].Value);
+                        if ((Convert.ToInt32(MusteriGridWiew.Rows[i].Cells[3].Value)<= Convert.ToInt32(AracGridWiew.Rows[j].Cells[1].Value)) ||( Convert.ToBoolean((AracGridWiew.Rows[j].Cells[2].Value) = false)))
+                        {
+                             Pos1 = Convert.ToInt32(MusteriGridWiew.Rows[i].Cells[0].Value);
+                             Pos2 = Convert.ToInt32(MusteriGridWiew.Rows[i].Cells[0].Value)+1;
+                             Kapasite = Kapasite - Talep;
+                             Talep = Talep - Talep;
+                        }
+                        else
+                        {
+                            Pos1 = 0;
+                            Pos2 = 0;
+                            AracGridWiew.Rows[j].Cells[2].Value = true;
+                        }
+                        
+                        int Tmp = Çözüm[Pos1];
+                        Çözüm[Pos1] = Çözüm[Pos2];
+                        Çözüm[Pos2] = Tmp;
+                        Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
+                        if (Sonuç < EnİyiSonuç)
+                        {
+                            Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
+                            EnİyiSonuç = Sonuç;
+                        }
+                    }
+                }
+                listBox1.Items.Add(String.Format("En İyi Rota = {0}", EnİyiSonuç.ToString()));
+                for (i = 0; i < EnİyiÇözüm.Length; i++)
+                {
+                    listBox1.Items.Add(String.Format("En İyi Rota = {0}", EnİyiÇözüm[i]));
+                }
+            }
 
         }
     }

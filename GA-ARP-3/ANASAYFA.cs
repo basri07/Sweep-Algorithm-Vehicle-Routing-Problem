@@ -22,13 +22,6 @@ namespace GA_ARP_3
 
         }
 
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-            ARAÇLAR form2 = new ARAÇLAR();
-            form2.Show();
-
-        }
-
         private void metroTile3_Click(object sender, EventArgs e)
         {
             MÜŞTERİLER form3 = new MÜŞTERİLER();
@@ -45,6 +38,17 @@ namespace GA_ARP_3
         {
             Form1 form5 = new Form1();
             form5.Show();
+        }
+
+        private void metroTile1_Click_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void ARAC_Title_Click(object sender, EventArgs e)
+        {
+            ARAÇ_EKLE form2 = new ARAÇ_EKLE();
+            form2.Show();
         }
     }
 }

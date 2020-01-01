@@ -28,28 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ANASAYFA));
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroTile4 = new MetroFramework.Controls.MetroTile();
             this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.ARAC_Title = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
-            // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(24, 92);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(156, 122);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Orange;
-            this.metroTile1.TabIndex = 0;
-            this.metroTile1.Text = "ARAÇLAR";
-            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTile1.TileImage = ((System.Drawing.Image)(resources.GetObject("metroTile1.TileImage")));
-            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // metroTile2
             // 
@@ -97,16 +81,29 @@
             this.metroTile5.UseSelectable = true;
             this.metroTile5.Click += new System.EventHandler(this.metroTile5_Click);
             // 
+            // ARAC_Title
+            // 
+            this.ARAC_Title.ActiveControl = null;
+            this.ARAC_Title.Location = new System.Drawing.Point(14, 92);
+            this.ARAC_Title.Name = "ARAC_Title";
+            this.ARAC_Title.Size = new System.Drawing.Size(166, 122);
+            this.ARAC_Title.Style = MetroFramework.MetroColorStyle.Purple;
+            this.ARAC_Title.TabIndex = 5;
+            this.ARAC_Title.Text = "ARAÇLAR";
+            this.ARAC_Title.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ARAC_Title.UseSelectable = true;
+            this.ARAC_Title.Click += new System.EventHandler(this.ARAC_Title_Click);
+            // 
             // ANASAYFA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 429);
+            this.Controls.Add(this.ARAC_Title);
             this.Controls.Add(this.metroTile5);
             this.Controls.Add(this.metroTile4);
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile1);
             this.Name = "ANASAYFA";
             this.Text = "ANASAYFA";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -115,12 +112,11 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTile metroTile4;
         private MetroFramework.Controls.MetroTile metroTile5;
+        private MetroFramework.Controls.MetroTile ARAC_Title;
     }
 }
 

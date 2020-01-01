@@ -42,8 +42,6 @@
             this.kapasiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plakaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aracBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._GA_ARP_3DataSet6 = new GA_ARP_3._GA_ARP_3DataSet6();
-            this.aracTableAdapter = new GA_ARP_3._GA_ARP_3DataSet6TableAdapters.AracTableAdapter();
             this.müsterilerTableAdapter1 = new GA_ARP_3._GA_ARP_3DataSet8TableAdapters.MüsterilerTableAdapter();
             this.MusteriGridWiew = new System.Windows.Forms.DataGridView();
             this._GA_ARP_3DataSet10 = new GA_ARP_3._GA_ARP_3DataSet10();
@@ -60,7 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AracGridWiew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aracBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MusteriGridWiew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).BeginInit();
@@ -151,16 +148,11 @@
             // aracBindingSource
             // 
             this.aracBindingSource.DataMember = "Arac";
-            this.aracBindingSource.DataSource = this._GA_ARP_3DataSet6;
-            // 
-            // _GA_ARP_3DataSet6
-            // 
-            this._GA_ARP_3DataSet6.DataSetName = "_GA_ARP_3DataSet6";
-            this._GA_ARP_3DataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // aracTableAdapter
             // 
-            this.aracTableAdapter.ClearBeforeFill = true;
+
             // 
             // müsterilerTableAdapter1
             // 
@@ -244,7 +236,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AracGridWiew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aracBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MusteriGridWiew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).EndInit();
@@ -260,9 +251,9 @@
         private System.Windows.Forms.BindingSource müsterilerBindingSource;
         private _GA_ARP_3DataSet4TableAdapters.MüsterilerTableAdapter müsterilerTableAdapter;
         private System.Windows.Forms.DataGridView AracGridWiew;
-        private _GA_ARP_3DataSet6 _GA_ARP_3DataSet6;
+
         private System.Windows.Forms.BindingSource aracBindingSource;
-        private _GA_ARP_3DataSet6TableAdapters.AracTableAdapter aracTableAdapter;
+
         private System.Windows.Forms.DataGridViewTextBoxColumn ıDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn adiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kapasiteDataGridViewTextBoxColumn;
