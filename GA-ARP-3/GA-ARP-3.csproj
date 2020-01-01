@@ -152,12 +152,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_GA_ARP_3DataSet9.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ÇÖZÜM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ÇÖZÜM.Designer.cs">
-      <DependentUpon>ÇÖZÜM.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ANASAYFA.resx">
       <DependentUpon>ANASAYFA.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,9 +179,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ÇÖZÜM.resx">
-      <DependentUpon>ÇÖZÜM.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

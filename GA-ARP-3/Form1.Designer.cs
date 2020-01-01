@@ -37,21 +37,17 @@
             this.müsterilerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this._GA_ARP_3DataSet8 = new GA_ARP_3._GA_ARP_3DataSet8();
             this.AracGridWiew = new System.Windows.Forms.DataGridView();
-            this.ıDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kapasiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plakaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aracBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.müsterilerTableAdapter1 = new GA_ARP_3._GA_ARP_3DataSet8TableAdapters.MüsterilerTableAdapter();
             this.MusteriGridWiew = new System.Windows.Forms.DataGridView();
-            this._GA_ARP_3DataSet10 = new GA_ARP_3._GA_ARP_3DataSet10();
-            this.müsterilerBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.müsterilerTableAdapter2 = new GA_ARP_3._GA_ARP_3DataSet10TableAdapters.MüsterilerTableAdapter();
             this.ıDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.talepDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acılarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.müsterilerBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this._GA_ARP_3DataSet10 = new GA_ARP_3._GA_ARP_3DataSet10();
+            this.müsterilerTableAdapter2 = new GA_ARP_3._GA_ARP_3DataSet10TableAdapters.MüsterilerTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource1)).BeginInit();
@@ -59,8 +55,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AracGridWiew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aracBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MusteriGridWiew)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet10)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -68,7 +64,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(576, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(373, 459);
+            this.listBox1.Size = new System.Drawing.Size(680, 459);
             this.listBox1.TabIndex = 0;
             // 
             // button1
@@ -109,11 +105,6 @@
             // 
             this.AracGridWiew.AutoGenerateColumns = false;
             this.AracGridWiew.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AracGridWiew.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ıDDataGridViewTextBoxColumn1,
-            this.adiDataGridViewTextBoxColumn,
-            this.kapasiteDataGridViewTextBoxColumn,
-            this.plakaDataGridViewTextBoxColumn});
             this.AracGridWiew.DataSource = this.aracBindingSource;
             this.AracGridWiew.Location = new System.Drawing.Point(3, 33);
             this.AracGridWiew.Name = "AracGridWiew";
@@ -121,38 +112,9 @@
             this.AracGridWiew.TabIndex = 2;
             this.AracGridWiew.Visible = false;
             // 
-            // ıDDataGridViewTextBoxColumn1
-            // 
-            this.ıDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.ıDDataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.ıDDataGridViewTextBoxColumn1.Name = "ıDDataGridViewTextBoxColumn1";
-            // 
-            // adiDataGridViewTextBoxColumn
-            // 
-            this.adiDataGridViewTextBoxColumn.DataPropertyName = "Adi";
-            this.adiDataGridViewTextBoxColumn.HeaderText = "Adi";
-            this.adiDataGridViewTextBoxColumn.Name = "adiDataGridViewTextBoxColumn";
-            // 
-            // kapasiteDataGridViewTextBoxColumn
-            // 
-            this.kapasiteDataGridViewTextBoxColumn.DataPropertyName = "Kapasite";
-            this.kapasiteDataGridViewTextBoxColumn.HeaderText = "Kapasite";
-            this.kapasiteDataGridViewTextBoxColumn.Name = "kapasiteDataGridViewTextBoxColumn";
-            // 
-            // plakaDataGridViewTextBoxColumn
-            // 
-            this.plakaDataGridViewTextBoxColumn.DataPropertyName = "Plaka";
-            this.plakaDataGridViewTextBoxColumn.HeaderText = "Plaka";
-            this.plakaDataGridViewTextBoxColumn.Name = "plakaDataGridViewTextBoxColumn";
-            // 
             // aracBindingSource
             // 
             this.aracBindingSource.DataMember = "Arac";
-
-            // 
-            // aracTableAdapter
-            // 
-
             // 
             // müsterilerTableAdapter1
             // 
@@ -173,20 +135,6 @@
             this.MusteriGridWiew.Name = "MusteriGridWiew";
             this.MusteriGridWiew.Size = new System.Drawing.Size(543, 416);
             this.MusteriGridWiew.TabIndex = 3;
-            // 
-            // _GA_ARP_3DataSet10
-            // 
-            this._GA_ARP_3DataSet10.DataSetName = "_GA_ARP_3DataSet10";
-            this._GA_ARP_3DataSet10.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // müsterilerBindingSource2
-            // 
-            this.müsterilerBindingSource2.DataMember = "Müsteriler";
-            this.müsterilerBindingSource2.DataSource = this._GA_ARP_3DataSet10;
-            // 
-            // müsterilerTableAdapter2
-            // 
-            this.müsterilerTableAdapter2.ClearBeforeFill = true;
             // 
             // ıDDataGridViewTextBoxColumn
             // 
@@ -218,11 +166,25 @@
             this.acılarDataGridViewTextBoxColumn.HeaderText = "Acılar";
             this.acılarDataGridViewTextBoxColumn.Name = "acılarDataGridViewTextBoxColumn";
             // 
+            // müsterilerBindingSource2
+            // 
+            this.müsterilerBindingSource2.DataMember = "Müsteriler";
+            this.müsterilerBindingSource2.DataSource = this._GA_ARP_3DataSet10;
+            // 
+            // _GA_ARP_3DataSet10
+            // 
+            this._GA_ARP_3DataSet10.DataSetName = "_GA_ARP_3DataSet10";
+            this._GA_ARP_3DataSet10.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // müsterilerTableAdapter2
+            // 
+            this.müsterilerTableAdapter2.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 463);
+            this.ClientSize = new System.Drawing.Size(1268, 463);
             this.Controls.Add(this.MusteriGridWiew);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
@@ -237,8 +199,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AracGridWiew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aracBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MusteriGridWiew)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet10)).EndInit();
             this.ResumeLayout(false);
 
         }

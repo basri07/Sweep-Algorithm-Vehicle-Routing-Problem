@@ -13,105 +13,101 @@ using System.Windows.Forms;
 namespace GA_ARP_3
 {
 
-    public class Musteri
+    public class Musteri : ICloneable
        
     {
-        private SqlDataReader dr;
-
-       /* public Musteri(SqlDataReader dr)
+        public object Clone()
         {
-            this.dr = dr;
+            return this.MemberwiseClone();
+        }
+        public Musteri()
+        {
+
+        }
+        public Musteri(int ID, double X, double Y, int Talep,double Acılar)
+        {
+            this.ID = ID;
+            this.X = X;
+            this.Y = Y;
+            this.Talep = Talep;
+            this.Acılar = Acılar;
         }
 
-         public object MusteriID;
-            public object Enlem;
-            public object Boylam;
-            public object SiparisMiktari;
-            public Double Uzaklik;*/
+        public int ID { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public int Talep { get; set; }
+        public double Acılar { get; set; }
 
-       /* public Musteri(object MusteriID,object Enlem, object Boylam, object SiparisMiktari, Double Uzaklik)
-        {
-            this.MusteriID = MusteriID;
-            this.Enlem = Enlem;
-            this.Boylam = Boylam;
-            this.SiparisMiktari = SiparisMiktari;
-            this.Uzaklik = Uzaklik;
-        }
+        /* int _ID;
+         double _X;
+         double _Y;
+         int _Talep;
+         double _Acılar;
 
-        public object MusteriID { get; set; }
-        public object Enlem  { get; set; } 
-        public object Boylam  { get; set; } 
-        public object SiparisMiktari { get; set; }
-        public Double Uzaklik { get; set; } */
-        
-        int _ID;
-        double _X;
-        double _Y;
-        int _Talep;
-        double _Acılar;
+         public int ID
+         {
+             get
+             {
+                 return _ID;
+             }
 
-        public int ID
-        {
-            get
-            {
-                return _ID;
-            }
+             set
+             {
+                 _ID = value;
+             }
+         }
+         public double X
+         {
+             get
+             {
+                 return _X;
+             }
 
-            set
-            {
-                _ID = value;
-            }
-        }
-        public double X
-        {
-            get
-            {
-                return _X;
-            }
+             set
+             {
+                 _X = value;
+             }
+         }
+         public double Y
+         {
+             get
+             {
+                 return _Y;
+             }
 
-            set
-            {
-                _X = value;
-            }
-        }
-        public double Y
-        {
-            get
-            {
-                return _Y;
-            }
+             set
+             {
+                 _Y = value;
+             }
+         }
 
-            set
-            {
-                _Y = value;
-            }
-        }
+         public int Talep
+         {
+             get
+             {
+                 return _Talep;
+             }
 
-        public int Talep
-        {
-            get
-            {
-                return _Talep;
-            }
+             set
+             {
+                 _Talep= value;
+             }
+         }
 
-            set
-            {
-                _Talep= value;
-            }
-        }
+         public double Acılar
+         {
+             get
+             {
+                 return _Acılar;
+             }
 
-        public double Acılar
-        {
-            get
-            {
-                return _Acılar;
-            }
+             set
+             {
+                 _Acılar = value;
+             }
+         }*/
 
-            set
-            {
-                _Acılar = value;
-            }
-        }
     }
 }
 

@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace GA_ARP_3
 {
-    public class Bireyler:ICloneable
+   /* public class Bireyler:ICloneable
     {
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+        public object Clone => this.MemberwiseClone();
 
 
         public Bireyler(String Kromozom, String AraclarinGuzergahi, int Uygunluk, int ToplamYol, List<Araclar> AraclarSirasi)
@@ -28,5 +25,5 @@ namespace GA_ARP_3
         public int Uygunluk { get; set; }
         public int ToplamYol { get; set; }
         public List<Araclar> AraclarSirasi { get; set; }
-    }
+    }*/
 }

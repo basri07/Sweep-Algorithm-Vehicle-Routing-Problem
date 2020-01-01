@@ -12,48 +12,63 @@ namespace GA_ARP_3
         int _ID;
         int _Kapasite;
         Boolean _Kullanıldımı;
-
-        public int ID
+        public object Clone()
         {
-            get
-            {
-                return _ID;
-            }
-
-            set
-            {
-                _ID = value;
-            }
+            return this.MemberwiseClone();
         }
-        public int Kapasite
+        public Araclar()
         {
-            get
-            {
-                return _Kapasite;
-            }
 
-            set
-            {
-                _Kapasite= value;
-            }
         }
-        public Boolean Kullanıldımı
+        public Araclar(int ID, int Kapasite, Boolean Kullanildimi)
         {
-            get
-            {
-                return _Kullanıldımı;
-            }
-
-            set
-            {
-                _Kullanıldımı = value;
-            }
+            this.ID = ID;
+            this.Kapasite = Kapasite;
+            this.Kullanildimi = Kullanildimi;
         }
 
-        object ICloneable.Clone()
-        {
-            throw new NotImplementedException();
-        }
+        public int ID { get; set; }
+        public int Kapasite { get; set; }
+        public Boolean Kullanildimi { get; set; }
+
+        /* public int ID
+         {
+             get
+             {
+                 return _ID;
+             }
+
+             set
+             {
+                 _ID = value;
+             }
+         }
+         public int Kapasite
+         {
+             get
+             {
+                 return _Kapasite;
+             }
+
+             set
+             {
+                 _Kapasite= value;
+             }
+         }
+         public Boolean Kullanıldımı
+         {
+             get
+             {
+                 return _Kullanıldımı;
+             }
+
+             set
+             {
+                 _Kullanıldımı = value;
+             }
+         }*/
+
+
         /*  private SqlDataReader dr;
 
 public object Clone()
