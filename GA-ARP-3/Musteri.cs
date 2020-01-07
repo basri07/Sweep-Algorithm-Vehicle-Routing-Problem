@@ -24,13 +24,14 @@ namespace GA_ARP_3
         {
 
         }
-        public Musteri(int ID, double X, double Y, int Talep,double Acılar)
+        public Musteri(int ID, double X, double Y, int Talep,double Acılar,Boolean Gidildimi)
         {
             this.ID = ID;
             this.X = X;
             this.Y = Y;
             this.Talep = Talep;
             this.Acılar = Acılar;
+            this.Gidildimi = Gidildimi;
         }
 
         public int ID { get; set; }
@@ -38,6 +39,7 @@ namespace GA_ARP_3
         public double Y { get; set; }
         public int Talep { get; set; }
         public double Acılar { get; set; }
+        public Boolean Gidildimi { get; set; }
 
         /* int _ID;
          double _X;

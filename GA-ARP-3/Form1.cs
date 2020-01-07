@@ -29,8 +29,9 @@ namespace GA_ARP_3
         private void Form1_Load(object sender, EventArgs e)
 
         {
-            // TODO: This line of code loads data into the '_GA_ARP_3DataSet10.Müsteriler' table. You can move, or remove it, as needed.
-            this.müsterilerTableAdapter2.Fill(this._GA_ARP_3DataSet10.Müsteriler);
+            // TODO: This line of code loads data into the '_GA_ARP_3DataSet2.Müsteriler' table. You can move, or remove it, as needed.
+            this.müsterilerTableAdapter3.Fill(this._GA_ARP_3DataSet2.Müsteriler);
+
 
             baglanti = new SqlConnection("Data Source = BASRI\\BASRI; Initial Catalog = GA-ARP-3; Integrated Security = True");
             da = new SqlDataAdapter("Select *From Müsteriler order by Acılar", baglanti);
@@ -46,7 +47,7 @@ namespace GA_ARP_3
             baglanti.Open();
             komut = new SqlCommand(sql, baglanti);
             SqlDataReader dr = komut.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
                 Musteri depo = new Musteri();
                 depo.ID = Convert.ToInt32(dr[0]);
@@ -54,11 +55,12 @@ namespace GA_ARP_3
                 depo.Y = Convert.ToDouble(dr[2]);
                 depo.Talep = Convert.ToInt32(dr[3]);
                 depo.Acılar = Convert.ToDouble(dr[4]);
+                depo.Gidildimi = Convert.ToBoolean(dr[5]);
                 MusteriListesi.Add(depo);
             }
             baglanti.Close();
 
-            string sql1 = "SELECT*FROM Arac";
+            string sql1 = "SELECT*FROM Arac ";
             baglanti.Open();
             komut = new SqlCommand(sql1, baglanti);
             SqlDataReader dr1 = komut.ExecuteReader();
@@ -67,11 +69,11 @@ namespace GA_ARP_3
                 Araclar arac = new Araclar();
                 arac.ID = Convert.ToInt32(dr1[0]);
                 arac.Kapasite = Convert.ToInt32(dr1[1]);
-                arac.Kullanildimi = Convert.ToBoolean(dr1[2]);;
+                arac.Kullanildimi = Convert.ToBoolean(dr1[2]); ;
                 Araclist.Add(arac);
             }
             baglanti.Close();
-           // listBox1.Items.Add(Convert.ToString(Araclist));
+            // listBox1.Items.Add(Convert.ToString(Araclist));
             /* SqlCommand komut = new SqlCommand("Select*From Müsteriler order by Acılar", baglanti);
              try
              {
@@ -100,15 +102,12 @@ namespace GA_ARP_3
              finally { baglanti.Close(); }*/
 
             int MüşteriSayısı = MusteriGridWiew.RowCount - 1;
-            int[] Çözüm = new int[MüşteriSayısı];
-            int[] EnİyiÇözüm = new int[MüşteriSayısı];
+
             int i, j;
             double[,] Uzaklık = new double[MüşteriSayısı, MüşteriSayısı];
-            double[] PolarKoordinat = new double[MüşteriSayısı];
-            double[] X = new double[MüşteriSayısı - 1];
-            double[] Y = new double[MüşteriSayısı - 1];
 
-        
+
+
             for (i = 0; i < MüşteriSayısı; i++)
                 for (j = 0; j < MüşteriSayısı; j++)
                 {
@@ -116,7 +115,7 @@ namespace GA_ARP_3
                     Uzaklık[i, j] += Math.Pow(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[2].Value) - Convert.ToDouble(MusteriGridWiew.Rows[j].Cells[2].Value), 2);
                     Uzaklık[i, j] = Math.Sqrt(Uzaklık[i, j]);
                     Uzaklık[i, j] = Math.Ceiling(Uzaklık[i, j]);
-                   // listBox1.Items.Add(Uzaklık[i, j]);
+                    // listBox1.Items.Add(Uzaklık[i, j]);
                 }
             /*  for (i = 1; i < MüşteriSayısı; i++)
             {
@@ -131,77 +130,92 @@ namespace GA_ARP_3
 
         private void button1_Click(object sender, EventArgs e)
         {
-           string Guzergah = Convert.ToString(MusteriListesi[0].ID);
+            
             int MüsteriSayisi = MusteriListesi.Count;
             int[] Çözüm = new int[MüsteriSayisi];
             int[] EnİyiÇözüm = new int[MüsteriSayisi];
             double[,] Uzaklık = new double[MüsteriSayisi, MüsteriSayisi];
-            int i;
+            int i, j;
             double Sonuç, EnİyiSonuç;
-            for (i=0 ; i < MüsteriSayisi; i++)
+            for (i = 0; i < MüsteriSayisi; i++)
+                for (j = 0; j < MüsteriSayisi; j++)
+                {
+                    Uzaklık[i, j] = Math.Pow(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[1].Value) - Convert.ToDouble(MusteriGridWiew.Rows[j].Cells[1].Value), 2);
+                    Uzaklık[i, j] += Math.Pow(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[2].Value) - Convert.ToDouble(MusteriGridWiew.Rows[j].Cells[2].Value), 2);
+                    Uzaklık[i, j] = Math.Sqrt(Uzaklık[i, j]);
+                    Uzaklık[i, j] = Math.Ceiling(Uzaklık[i, j]);
+                    // listBox1.Items.Add(Uzaklık[i, j]);
+                }
+            for (i = 0; i < MüsteriSayisi; i++)
             {
                 Çözüm[i] = i;
             }
             Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
             Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
             EnİyiSonuç = Sonuç;
-           for(i=0;i<MüsteriSayisi-1 ;i++)
-           {
-                List<Musteri> bireyinMusterileri = MusteriListesi.CloneList().ToList();
-                List<Araclar> bireyinAraclari = Araclist.CloneList().ToList();
-                int SuankiMusteri = Convert.ToInt32(bireyinMusterileri[i].ID);
-                int SıradakiMüsteri = Convert.ToInt32(bireyinMusterileri[i+1].ID);
-                for (int j =0; j <Araclist.Count;j++)
-                {
-                    for (int a = 0; a < bireyinMusterileri.Count; a++)
-                    {
-                        if (bireyinMusterileri[a].Talep <= bireyinAraclari[j].Kapasite && bireyinAraclari[j].Kullanildimi == false)
-                        {
-                            int SuankiTalep = bireyinMusterileri[a].Talep;
-                            SuankiMusteri = bireyinMusterileri[a].ID;
-                            int Kapasite = bireyinAraclari[j].Kapasite - bireyinMusterileri[a].Talep;
-                            SıradakiMüsteri = bireyinMusterileri[a + 1].ID;
-                            Guzergah += "*" + Convert.ToString(SıradakiMüsteri);
-                            if (bireyinMusterileri[a].ID != 0)
-                            {
-                                bireyinMusterileri.RemoveAt(a);
-                            }
+            int itersay = 200;
+            int Mus1;
+            // for(i=0;i<itersay ;i++)
+            // {
 
-                            if (Kapasite < bireyinMusterileri[a + 1].Talep)
-                            {
-                                SıradakiMüsteri = bireyinMusterileri[0].ID;
-                                bireyinAraclari[j].Kullanildimi = true;
-                                Guzergah += "*" + Convert.ToString(SıradakiMüsteri) + "---";
-                            }
-                            else
-                            {
-                                SıradakiMüsteri = bireyinMusterileri[a + 1].ID;
-                                Guzergah += "*" + Convert.ToString(SıradakiMüsteri);
-                            }
 
-                        }
 
-                        else
-                        {
-                            SıradakiMüsteri = bireyinMusterileri[0].ID;
-                            bireyinAraclari[j].Kullanildimi = true;
-                        }
-                    }
-                }
-                int Tmp = Çözüm[SuankiMusteri];
-                Çözüm[SuankiMusteri] = Çözüm[SıradakiMüsteri];
-                Çözüm[SıradakiMüsteri] = Tmp;
-                Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
-                if (Sonuç < EnİyiSonuç)
-                {
-                    Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
-                    EnİyiSonuç = Sonuç;
-                }
-            }
-            for (i = 0; i < EnİyiÇözüm.Length; i++)
+            List<Araclar> bireyinAraclari = Araclist.CloneList().ToList();
+            List<Musteri> bireyinMusterileri = MusteriListesi.CloneList().ToList();
+            int a = 0;
+            string Guzergah = " ";
+            for (int b = 0; b < bireyinAraclari.Count; b++)
             {
-                listBox1.Items.Add(String.Format ("{0}\t",Guzergah));
+                
+                 for (a=a; a<MüsteriSayisi;a++)
+                 {
+
+                     try
+                     {
+                        if (bireyinAraclari[b].Kullanildimi == false && bireyinMusterileri[a].Talep <= bireyinAraclari[b].Kapasite && bireyinMusterileri[a].Gidildimi == false) 
+                        {
+                                Mus1 = bireyinMusterileri[a].ID;
+                                // Mus2 = bireyinMusterileri[a + 1].ID;
+                                bireyinAraclari[b].Kapasite = bireyinAraclari[b].Kapasite - bireyinMusterileri[a].Talep;
+                                Guzergah += "*" + Convert.ToString(Mus1);
+                                bireyinMusterileri[a].Gidildimi = true;
+                               
+                        }
+                        else 
+                        {
+                                
+                            Mus1 = bireyinMusterileri[a].ID;
+                            bireyinAraclari[b].Kullanildimi = true;
+                            bireyinAraclari[b].Kapasite = bireyinAraclari[b].Kapasite - bireyinMusterileri[a].Talep;
+                            Guzergah += "*" + Convert.ToString(Mus1);
+                            Guzergah += "*0  *0";
+                            listBox1.Items.Add(String.Format("{0}", Guzergah));
+                            break;
+                                 
+                        }
+                        
+                    }
+                        catch (Exception)
+                        {
+
+                        }
+
+                    
+                }
+
+                /* Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
+                 if (Sonuç < EnİyiSonuç)
+                 {
+                     Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
+                     EnİyiSonuç = Sonuç;
+                 }
+                 for (i = 0; i < EnİyiÇözüm.Length; i++)
+                 {
+
+                 }*/
             }
+
+                     
         }
     }
     internal static class Extensions

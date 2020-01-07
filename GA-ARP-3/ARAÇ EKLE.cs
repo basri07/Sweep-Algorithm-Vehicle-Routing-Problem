@@ -79,7 +79,7 @@ namespace GA_ARP_3
             for (int i = 0; i < AracSayisi; i++)
             {
                 bool Kullanıldımı = false;
-                int Kapasite = rastgele.Next(500, 5000);
+                int Kapasite = rastgele.Next(30000,50000);
                 id_TextBox.Text = i.ToString();
                 Kapasite_TextBoz.Text = Kapasite.ToString();
 

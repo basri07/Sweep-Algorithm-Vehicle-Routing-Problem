@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.müsteriBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._GA_ARP_3DataSet1 = new GA_ARP_3._GA_ARP_3DataSet1();
             this.müsteriTableAdapter = new GA_ARP_3._GA_ARP_3DataSet1TableAdapters.MüsteriTableAdapter();
@@ -46,25 +49,32 @@
             this.müsterilerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this._GA_ARP_3DataSet5 = new GA_ARP_3._GA_ARP_3DataSet5();
             this.müsterilerTableAdapter1 = new GA_ARP_3._GA_ARP_3DataSet5TableAdapters.MüsterilerTableAdapter();
-            this.MusteriGrid = new System.Windows.Forms.DataGridView();
-            this._GA_ARP_3DataSet9 = new GA_ARP_3._GA_ARP_3DataSet9();
             this.müsterilerBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this._GA_ARP_3DataSet9 = new GA_ARP_3._GA_ARP_3DataSet9();
             this.müsterilerTableAdapter2 = new GA_ARP_3._GA_ARP_3DataSet9TableAdapters.MüsterilerTableAdapter();
+            this.PolarKoodinat = new System.Windows.Forms.TextBox();
+            this.Gidildimi = new System.Windows.Forms.TextBox();
+            this.MusteriGrid = new MetroFramework.Controls.MetroGrid();
+            this._GA_ARP_3DataSet = new GA_ARP_3._GA_ARP_3DataSet();
+            this.müsterilerBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.müsterilerTableAdapter3 = new GA_ARP_3._GA_ARP_3DataSetTableAdapters.MüsterilerTableAdapter();
             this.ıDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.talepDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acılarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PolarKoodinat = new System.Windows.Forms.TextBox();
+            this.gidildimiDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.müsteriBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // müsteriBindingSource
@@ -173,7 +183,7 @@
             // 
             // AracEkle_Button
             // 
-            this.AracEkle_Button.Location = new System.Drawing.Point(9, 263);
+            this.AracEkle_Button.Location = new System.Drawing.Point(9, 300);
             this.AracEkle_Button.Name = "AracEkle_Button";
             this.AracEkle_Button.Size = new System.Drawing.Size(274, 44);
             this.AracEkle_Button.TabIndex = 6;
@@ -227,7 +237,7 @@
             // 
             // Sil_Button
             // 
-            this.Sil_Button.Location = new System.Drawing.Point(9, 313);
+            this.Sil_Button.Location = new System.Drawing.Point(9, 350);
             this.Sil_Button.Name = "Sil_Button";
             this.Sil_Button.Size = new System.Drawing.Size(274, 44);
             this.Sil_Button.TabIndex = 9;
@@ -237,7 +247,7 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(9, 363);
+            this.metroButton1.Location = new System.Drawing.Point(9, 400);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(274, 44);
             this.metroButton1.TabIndex = 10;
@@ -260,7 +270,7 @@
             this.MüsteriSayisi_TextBox.CustomButton.UseSelectable = true;
             this.MüsteriSayisi_TextBox.CustomButton.Visible = false;
             this.MüsteriSayisi_TextBox.Lines = new string[0];
-            this.MüsteriSayisi_TextBox.Location = new System.Drawing.Point(9, 234);
+            this.MüsteriSayisi_TextBox.Location = new System.Drawing.Point(9, 271);
             this.MüsteriSayisi_TextBox.MaxLength = 32767;
             this.MüsteriSayisi_TextBox.Name = "MüsteriSayisi_TextBox";
             this.MüsteriSayisi_TextBox.PasswordChar = '\0';
@@ -289,35 +299,99 @@
             // 
             this.müsterilerTableAdapter1.ClearBeforeFill = true;
             // 
-            // MusteriGrid
+            // müsterilerBindingSource2
             // 
-            this.MusteriGrid.AutoGenerateColumns = false;
-            this.MusteriGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MusteriGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ıDDataGridViewTextBoxColumn,
-            this.xDataGridViewTextBoxColumn,
-            this.yDataGridViewTextBoxColumn,
-            this.talepDataGridViewTextBoxColumn,
-            this.acılarDataGridViewTextBoxColumn});
-            this.MusteriGrid.DataSource = this.müsterilerBindingSource2;
-            this.MusteriGrid.Location = new System.Drawing.Point(303, 83);
-            this.MusteriGrid.Name = "MusteriGrid";
-            this.MusteriGrid.Size = new System.Drawing.Size(538, 324);
-            this.MusteriGrid.TabIndex = 12;
+            this.müsterilerBindingSource2.DataMember = "Müsteriler";
+            this.müsterilerBindingSource2.DataSource = this._GA_ARP_3DataSet9;
             // 
             // _GA_ARP_3DataSet9
             // 
             this._GA_ARP_3DataSet9.DataSetName = "_GA_ARP_3DataSet9";
             this._GA_ARP_3DataSet9.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // müsterilerBindingSource2
-            // 
-            this.müsterilerBindingSource2.DataMember = "Müsteriler";
-            this.müsterilerBindingSource2.DataSource = this._GA_ARP_3DataSet9;
-            // 
             // müsterilerTableAdapter2
             // 
             this.müsterilerTableAdapter2.ClearBeforeFill = true;
+            // 
+            // PolarKoodinat
+            // 
+            this.PolarKoodinat.Location = new System.Drawing.Point(9, 200);
+            this.PolarKoodinat.Name = "PolarKoodinat";
+            this.PolarKoodinat.Size = new System.Drawing.Size(274, 20);
+            this.PolarKoodinat.TabIndex = 13;
+            // 
+            // Gidildimi
+            // 
+            this.Gidildimi.Location = new System.Drawing.Point(9, 226);
+            this.Gidildimi.Name = "Gidildimi";
+            this.Gidildimi.Size = new System.Drawing.Size(274, 20);
+            this.Gidildimi.TabIndex = 14;
+            // 
+            // MusteriGrid
+            // 
+            this.MusteriGrid.AllowUserToResizeRows = false;
+            this.MusteriGrid.AutoGenerateColumns = false;
+            this.MusteriGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.MusteriGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MusteriGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.MusteriGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MusteriGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.MusteriGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MusteriGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ıDDataGridViewTextBoxColumn,
+            this.xDataGridViewTextBoxColumn,
+            this.yDataGridViewTextBoxColumn,
+            this.talepDataGridViewTextBoxColumn,
+            this.acılarDataGridViewTextBoxColumn,
+            this.gidildimiDataGridViewCheckBoxColumn});
+            this.MusteriGrid.DataSource = this.müsterilerBindingSource3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MusteriGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.MusteriGrid.EnableHeadersVisualStyles = false;
+            this.MusteriGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.MusteriGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.MusteriGrid.Location = new System.Drawing.Point(330, 83);
+            this.MusteriGrid.Name = "MusteriGrid";
+            this.MusteriGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MusteriGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.MusteriGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.MusteriGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MusteriGrid.Size = new System.Drawing.Size(622, 361);
+            this.MusteriGrid.TabIndex = 15;
+            // 
+            // _GA_ARP_3DataSet
+            // 
+            this._GA_ARP_3DataSet.DataSetName = "_GA_ARP_3DataSet";
+            this._GA_ARP_3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // müsterilerBindingSource3
+            // 
+            this.müsterilerBindingSource3.DataMember = "Müsteriler";
+            this.müsterilerBindingSource3.DataSource = this._GA_ARP_3DataSet;
+            // 
+            // müsterilerTableAdapter3
+            // 
+            this.müsterilerTableAdapter3.ClearBeforeFill = true;
             // 
             // ıDDataGridViewTextBoxColumn
             // 
@@ -349,20 +423,20 @@
             this.acılarDataGridViewTextBoxColumn.HeaderText = "Acılar";
             this.acılarDataGridViewTextBoxColumn.Name = "acılarDataGridViewTextBoxColumn";
             // 
-            // PolarKoodinat
+            // gidildimiDataGridViewCheckBoxColumn
             // 
-            this.PolarKoodinat.Location = new System.Drawing.Point(9, 200);
-            this.PolarKoodinat.Name = "PolarKoodinat";
-            this.PolarKoodinat.Size = new System.Drawing.Size(274, 20);
-            this.PolarKoodinat.TabIndex = 13;
+            this.gidildimiDataGridViewCheckBoxColumn.DataPropertyName = "Gidildimi";
+            this.gidildimiDataGridViewCheckBoxColumn.HeaderText = "Gidildimi";
+            this.gidildimiDataGridViewCheckBoxColumn.Name = "gidildimiDataGridViewCheckBoxColumn";
             // 
             // MÜŞTERİLER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 450);
-            this.Controls.Add(this.PolarKoodinat);
+            this.ClientSize = new System.Drawing.Size(1090, 450);
             this.Controls.Add(this.MusteriGrid);
+            this.Controls.Add(this.Gidildimi);
+            this.Controls.Add(this.PolarKoodinat);
             this.Controls.Add(this.MüsteriSayisi_TextBox);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.Sil_Button);
@@ -381,9 +455,11 @@
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MusteriGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GA_ARP_3DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.müsterilerBindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,15 +483,20 @@
         private _GA_ARP_3DataSet5 _GA_ARP_3DataSet5;
         private System.Windows.Forms.BindingSource müsterilerBindingSource1;
         private _GA_ARP_3DataSet5TableAdapters.MüsterilerTableAdapter müsterilerTableAdapter1;
-        private System.Windows.Forms.DataGridView MusteriGrid;
         private _GA_ARP_3DataSet9 _GA_ARP_3DataSet9;
         private System.Windows.Forms.BindingSource müsterilerBindingSource2;
         private _GA_ARP_3DataSet9TableAdapters.MüsterilerTableAdapter müsterilerTableAdapter2;
+        private System.Windows.Forms.TextBox PolarKoodinat;
+        private System.Windows.Forms.TextBox Gidildimi;
+        private MetroFramework.Controls.MetroGrid MusteriGrid;
+        private _GA_ARP_3DataSet _GA_ARP_3DataSet;
+        private System.Windows.Forms.BindingSource müsterilerBindingSource3;
+        private _GA_ARP_3DataSetTableAdapters.MüsterilerTableAdapter müsterilerTableAdapter3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn yDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn talepDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn acılarDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox PolarKoodinat;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gidildimiDataGridViewCheckBoxColumn;
     }
 }
