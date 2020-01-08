@@ -115,7 +115,7 @@ namespace GA_ARP_3
                 int MüsteriAd = rastgele.Next(0, 100);
                 double KoordX =rastgele.Next(-200, 200)+rastgele.NextDouble();
                 double KoordY = rastgele.Next(-200, 200) + rastgele.NextDouble();
-                int Talep = rastgele.Next(100, 15000);
+                int Talep = rastgele.Next(10000, 15000);
                // double[] PolarKoordinat = new double[Müsterisayisi];
                 string harfler = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz";
                 int harf = rastgele.Next(0, harfler.Length);
