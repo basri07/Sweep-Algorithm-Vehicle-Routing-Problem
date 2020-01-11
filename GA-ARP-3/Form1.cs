@@ -34,7 +34,7 @@ namespace GA_ARP_3
 
 
             baglanti = new SqlConnection("Data Source = BASRI\\BASRI; Initial Catalog = GA-ARP-3; Integrated Security = True");
-            da = new SqlDataAdapter("Select *From Müsteriler order by Acılar", baglanti);
+            da = new SqlDataAdapter("Select *From Müsteriler", baglanti);
             ds = new DataSet();
             DataTable dt = new DataTable();
             baglanti.Open();
@@ -82,7 +82,7 @@ namespace GA_ARP_3
 
 
 
-            for (i = 0; i < MüşteriSayısı; i++)
+         /*   for (i = 0; i < MüşteriSayısı; i++)
                 for (j = 0; j < MüşteriSayısı; j++)
                 {
                     Uzaklık[i, j] = Math.Pow(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[1].Value) - Convert.ToDouble(MusteriGridWiew.Rows[j].Cells[1].Value), 2);
@@ -90,7 +90,7 @@ namespace GA_ARP_3
                     Uzaklık[i, j] = Math.Sqrt(Uzaklık[i, j]);
                     Uzaklık[i, j] = Math.Ceiling(Uzaklık[i, j]);
                     // listBox1.Items.Add(Uzaklık[i, j]);
-                }
+                }*/
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,8 +100,9 @@ namespace GA_ARP_3
             int[] Çözüm = new int[MüsteriSayisi];
             int[] EnİyiÇözüm = new int[MüsteriSayisi];
             double[,] Uzaklık = new double[MüsteriSayisi, MüsteriSayisi];
+            double[] Sonuç = new double[MüsteriSayisi];
             int i, j;
-            double Sonuç, EnİyiSonuç;
+            double EnİyiSonuç;
             for (i = 0; i < MüsteriSayisi; i++)
                 for (j = 0; j < MüsteriSayisi; j++)
                 {
@@ -109,76 +110,153 @@ namespace GA_ARP_3
                     Uzaklık[i, j] += Math.Pow(Convert.ToDouble(MusteriGridWiew.Rows[i].Cells[2].Value) - Convert.ToDouble(MusteriGridWiew.Rows[j].Cells[2].Value), 2);
                     Uzaklık[i, j] = Math.Sqrt(Uzaklık[i, j]);
                     Uzaklık[i, j] = Math.Ceiling(Uzaklık[i, j]);
-                    listBox1.Items.Add(Uzaklık[i, j]);
+                    //listBox1.Items.Add(String.Format("{0}\n {1} \n {2}", i, j,Uzaklık[i, j]));
+                   
                 }
-            for (i = 0; i < MüsteriSayisi; i++)
-            {
-                Çözüm[i] = i;
-            }
-            Sonuç = Geography.AmaçFonkHesapla(MüsteriSayisi, Çözüm, Uzaklık);
-            Array.Copy(Çözüm, EnİyiÇözüm, Çözüm.Length);
-            EnİyiSonuç = Sonuç;
-
-            int Mus1,Mus2,Son;
-
-
-            List<Araclar> bireyinAraclari = Araclist.CloneList().ToList();
+            #region Parçacık Rotaları Süpürme Algoritması Yöntemi ile Oluşturulu
+            //a'yı burda tanımlamamızın sebebi rota hafızası için   
+            int Mus1, Mus2, Min;
+            EnİyiSonuç = 0;
             List<Musteri> bireyinMusterileri = MusteriListesi.CloneList().ToList();
-            //a'yı burda tanımlamamızın sebebi rota hafızası için
-            int a = 0;
-            string Guzergah = " ";
-            Sonuç = 0;
-            for (int b = 0; b < bireyinAraclari.Count; b++)
+            for (int c = 0;c<MüsteriSayisi-1;c++)
             {
-                if (a == MüsteriSayisi)
+                
+                List<Araclar> bireyinAraclari = Araclist.CloneList().ToList();
+                //string Guzergah = " ";
+                string[] Guzergah = new string[MüsteriSayisi];
+                Sonuç[c] = 0;
+                listBox1.Items.Add(String.Format("{0}", Guzergah));
+                int a = 0;
+
+                if (c != 0 && c < MüsteriSayisi-1)
                 {
-                    Mus1 = bireyinMusterileri[0].ID;
-                    Guzergah += "*" + Convert.ToString(Mus1);
-                    listBox1.Items.Add(String.Format("{0}", Guzergah));
-                    Sonuç += Uzaklık[a-1, 0];
-                    listBox1.Items.Add(Sonuç.ToString());
-                    break;
-                }
-                if (a != 0 && a<MüsteriSayisi-1) 
-                { 
-                    Mus1 = bireyinMusterileri[0].ID;
-                    Guzergah += "*" + Convert.ToString(Mus1);
-                    Sonuç += Uzaklık[0, a];
-                }
-                for (a = a; a < MüsteriSayisi; a++)
-                {
-                    try
+                  
+                    _ = new Musteri();
+                   Musteri insert = bireyinMusterileri[1];
+                   bireyinMusterileri.RemoveAt(1);
+                   bireyinMusterileri.Add(insert);
+                    
+                    for (int b = 0; b < bireyinAraclari.Count; b++)
                     {
-                        if (bireyinAraclari[b].Kullanildimi == false && bireyinMusterileri[a].Talep <= bireyinAraclari[b].Kapasite && bireyinMusterileri[a].Gidildimi == false)
+
+                        if (a != 0 && a < MüsteriSayisi )
                         {
-                            Mus1 = bireyinMusterileri[a].ID;
-                            bireyinAraclari[b].Kapasite = bireyinAraclari[b].Kapasite - bireyinMusterileri[a].Talep;
-                            Guzergah += "*" + Convert.ToString(Mus1);
-                            bireyinMusterileri[a].Gidildimi = true;
-                            if(bireyinMusterileri[a+1].Talep<bireyinAraclari[b].Kapasite)
-                            { 
-                            Sonuç += Uzaklık[a, a + 1];
-                            }
-                        }
-                        else
-                        {
-                            //döngü bitince Yeni araca geçer fakat a değeri kaldığı yerden devam eder.
                             Mus1 = bireyinMusterileri[0].ID;
-                            Guzergah += "*" + Convert.ToString(Mus1) + "---";
-                            
-                            bireyinAraclari[b].Kullanildimi = true;
-                            Sonuç += Uzaklık[a-1,0];
+                            Guzergah[c] += "*" + Convert.ToString(Mus1);
+                            Mus2 = bireyinMusterileri[a].ID;
+                            Sonuç[c] += Uzaklık[Mus1,Mus2];
+                        }
+                        if (a == MüsteriSayisi)
+                        {
+                            Mus2 = bireyinMusterileri[0].ID;
+                            Guzergah[c] += "*" + Convert.ToString(Mus2);
+                            listBox1.Items.Add(String.Format("{0}", Guzergah[c]));
+                            Mus1 = bireyinMusterileri[a - 1].ID;
+                            Sonuç[c] += Uzaklık[Mus1, Mus2];
+                            for (i = 0; i <= c; i++)
+                            {
+                                if (EnİyiSonuç > Sonuç[i])
+                                    EnİyiSonuç = Sonuç[i];
+                            }
+                            listBox1.Items.Add(Sonuç[c].ToString());
+                            listBox1.Items.Add(EnİyiSonuç.ToString());
                             break;
                         }
-                        
-                    }
-                    catch (Exception)
-                    {
+                        for (a = a; a < MüsteriSayisi; a++)
+                        {
+                            try
+                            {
+                                if (bireyinAraclari[b].Kullanildimi == false && bireyinMusterileri[a].Talep <= bireyinAraclari[b].Kapasite && bireyinMusterileri[a].Gidildimi == false)
+                                {
+                                    Mus1 = bireyinMusterileri[a].ID;
+                                    bireyinAraclari[b].Kapasite = bireyinAraclari[b].Kapasite - bireyinMusterileri[a].Talep;
+                                    Guzergah[c] += "*" + Convert.ToString(Mus1);
+                                    Mus2 = bireyinMusterileri[a+1].ID;
+                                    // bireyinMusterileri[a].Gidildimi = true;
+                                    if (bireyinMusterileri[a+1].Talep < bireyinAraclari[b].Kapasite)
+                                    {
+                                        Sonuç[c] += Uzaklık[Mus1, Mus2];
+                                    }
+                                }
+                                else
+                                {
+                                     //döngü bitince Yeni araca geçer fakat a değeri kaldığı yerden devam eder.
+                                     Mus1 = bireyinMusterileri[a - 1].ID;
+                                     Mus2 = bireyinMusterileri[0].ID;
+                                     Guzergah[c] += "*" + Convert.ToString(Mus2) + "---";
+                                     //bireyinAraclari[b].Kullanildimi = true;
+                                     Sonuç[c] += Uzaklık[Mus1, Mus2];
+                                     break;
+                                }
+                            }
+                            catch (Exception)
+                            {
 
+                            }
+                        }
                     }
                 }
-               
+                else
+                {
+                    for (int b = 0; b < bireyinAraclari.Count; b++)
+                    {
+                       
+                        if (a != 0 && a <MüsteriSayisi)
+                        {
+                            Mus1 = bireyinMusterileri[0].ID;
+                            Guzergah[c] += "*" + Convert.ToString(Mus1);
+                            Mus2 = bireyinMusterileri[a].ID;
+                            Sonuç[c] += Uzaklık[Mus1, Mus2];
+                        }
+                        if (a == MüsteriSayisi)
+                        {
+                            Mus2 = bireyinMusterileri[0].ID;
+                            Guzergah[c] += "*" + Convert.ToString(Mus2);
+                            listBox1.Items.Add(String.Format("{0}", Guzergah[c]));
+                            Mus1 = bireyinMusterileri[a - 1].ID;
+                            Sonuç[c] += Uzaklık[Mus1, Mus2];
+                            EnİyiSonuç = Sonuç[c];
+                            listBox1.Items.Add(Sonuç[c].ToString());
+                            listBox1.Items.Add(EnİyiSonuç.ToString());
+                            break;
+                        }
+                        for (a = a; a < MüsteriSayisi; a++)
+                        {
+                            try
+                            {
+                                if (bireyinAraclari[b].Kullanildimi == false && bireyinMusterileri[a].Talep <= bireyinAraclari[b].Kapasite && bireyinMusterileri[a].Gidildimi == false)
+                                {
+                                   Mus1 = bireyinMusterileri[a].ID;
+                                   bireyinAraclari[b].Kapasite = bireyinAraclari[b].Kapasite - bireyinMusterileri[a].Talep;
+                                   Guzergah[c] += "*" + Convert.ToString(Mus1);
+                                   Mus2 = bireyinMusterileri[a + 1].ID;
+                                   //bireyinMusterileri[a].Gidildimi = true;
+                                    if (bireyinMusterileri[a+1].Talep < bireyinAraclari[b].Kapasite)
+                                    {
+                                        Sonuç[c] += Uzaklık[Mus1, Mus2];
+                                    }
+                                } 
+                                else
+                                {
+                                     //döngü bitince Yeni araca geçer fakat a değeri kaldığı yerden devam eder.
+                                     Mus1 = bireyinMusterileri[a - 1].ID;
+                                     Mus2 = bireyinMusterileri[0].ID;
+                                     Guzergah[c] += "*" + Convert.ToString(Mus2) + "---";
+                                     bireyinAraclari[b].Kullanildimi = true;
+                                     Sonuç[c] += Uzaklık[Mus1, Mus2];
+                                     break;
+                                }
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                        }
+                    }
+                }
             }
+            #endregion
+            listBox1.Items.Add(EnİyiSonuç.ToString());
         }
     }
     internal static class Extensions
@@ -187,5 +265,13 @@ namespace GA_ARP_3
         {
             return list.Select(item => (T)item.Clone()).ToList();
         }
+        public static IList<T> Swap<T>(this IList<T> list, int indexA, int indexB)
+        {
+            T tmp = list[indexA];
+            list[indexA] = list[indexB];
+            list[indexB] = tmp;
+            return list;
+        }
     }
+
 }
